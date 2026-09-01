@@ -52,8 +52,34 @@ void ler_tarefas(){
     
 }
 
+
+
+void atualizar_tarefa(int id_procurado , char *nome_novo , char *descricao_novo , char *status_novo){
+    if (inicio == NULL){
+        printf("\n Lista Vazia\n");
+        return;
+    }
+
+    Tarefa *aux = inicio;
+
+    while (inicio != NULL){
+        if (aux->Id == id_procurado){
+            aux->Id = id_procurado;
+            aux->Nome = nome_novo;
+            aux->Descricao = descricao_novo;
+            aux->Status = status_novo;  
+
+            return;
+        }
+    aux = aux->prox;
+    }
+
+    printf("\n ID nao encontrado\n");
+}
+
+
+
     
 int main(){
-
 
 }
