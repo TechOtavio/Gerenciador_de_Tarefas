@@ -1,6 +1,6 @@
+#include <corecrt.h>
 #include <stdio.h>
 #include <stdlib.h>
-
 
 typedef struct Tarefa{
 
@@ -37,10 +37,17 @@ void add_Tarefa(int id , char *nome , char *descricao , char *status , int pos){
             tam ++;
         } else if(pos == tam){
             Tarefa *aux = inicio;
-
             for(int i = 0; i < tam -1 ; i++){
                 aux = aux->prox;
             }
+            aux->prox = novo;
+            tam++;
+        } else {
+            Tarefa *aux = inicio;
+            for( int i = 0; i < pos - 1 ; i++){
+                aux = aux->prox;
+            }
+            novo->prox = aux->prox;
             aux->prox = novo;
             tam++;
         }
@@ -49,8 +56,8 @@ void add_Tarefa(int id , char *nome , char *descricao , char *status , int pos){
 
 
 void ler_tarefas(){
-    
 }
+
 
 
 
@@ -67,7 +74,7 @@ void atualizar_tarefa(int id_procurado , char *nome_novo , char *descricao_novo 
             aux->Id = id_procurado;
             aux->Nome = nome_novo;
             aux->Descricao = descricao_novo;
-            aux->Status = status_novo;  
+            aux->Status = status_novo;
 
             return;
         }
@@ -78,8 +85,5 @@ void atualizar_tarefa(int id_procurado , char *nome_novo , char *descricao_novo 
 }
 
 
-
-    
 int main(){
-
 }
